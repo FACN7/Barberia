@@ -1,0 +1,25 @@
+{
+  "name": "Barberia",
+  "version": "1.0.0",
+  "description": "Barber shop booking system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN7/Barberia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN7/Barberia/issues"
+  },
+  "homepage": "https://github.com/FACN7/Barberia#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
