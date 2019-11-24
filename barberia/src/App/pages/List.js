@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class List extends Component {
   // Initialize the state
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       list: []
@@ -16,9 +16,9 @@ class List extends Component {
 
   // Retrieves the list of items from the Express app
   getList = () => {
-    fetch('/api/getList')
-    .then(res => res.json())
-    .then(list => this.setState({ list }))
+    fetch('/api/getAllBookings')
+      .then(res => res.json())
+      .then(list => this.setState({ list }))
   }
 
   render() {
@@ -32,19 +32,43 @@ class List extends Component {
           <div>
             {/* Render the list of items */}
             {list.map((item) => {
-              return(
+              return (
                 <div>
-                  {item}
+                <div>
+                  <h1>{item.booking_id}</h1>
                 </div>
+                  <div>
+                    {item.customer_name}
+                  </div>
+
+                  <div>
+                    {item.booking_date}
+                  </div>
+
+                  <div>
+                    {item.booking_time}
+                  </div>
+
+                  <div>
+                    {(item.customer_email)?item.customer_email:"none"}
+                  </div>
+                  <div>
+                    {item.customer_phone}
+                  </div>
+                  <div>
+                    {item.service_id}
+                  </div>
+                </div>
+
               );
             })}
           </div>
         ) : (
-          <div>
-            <h2>No List Items Found</h2>
-          </div>
-        )
-      }
+            <div>
+              <h2>No List Items Found</h2>
+            </div>
+          )
+        }
       </div>
     );
   }

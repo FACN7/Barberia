@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const queries = require('./src/queries/index');
 const app = express();
 
 // Serve the static files from the React app
@@ -11,6 +11,18 @@ app.get('/api/getList', (req,res) => {
     var list = ["item1", "item2", "item3"];
     res.json(list);
     console.log('Sent list of items');
+});
+app.get('/api/getAllBookings', (req,res) => {
+    queries.getAllBookings()
+    .then(bookings=> bookings.rows)
+    .then(rows=> {
+        console.log('Sent list of items', rows);
+        return res.json(rows)
+    }).catch(err=> console.log(err));
+    // res.json(getAllBookings().rows);
+    // var list = ["item1", "item2", "item3"];
+    // res.json(list);
+
 });
 // app.get('/', (req,res) =>{
 //     res.send("Home Bage");
