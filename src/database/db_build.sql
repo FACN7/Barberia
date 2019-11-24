@@ -1,15 +1,13 @@
 BEGIN;
     DROP TABLE IF EXISTS users,articles,bookings,services CASCADE;
-CREATE TABLE
-    IF NOT EXISTS services(
+CREATE TABLE services(
         service_id SERIAL PRIMARY KEY,
         service_name VARCHAR(100) NOT NULL,
         description TEXT,
         service_cost INTEGER NOT NULL DEFAULT 0,
         service_duration INTEGER NOT NULL DEFAULT 30
     );
-    CREATE TABLE
-    IF NOT EXISTS bookings(
+    CREATE TABLE bookings(
         booking_id SERIAL PRIMARY KEY,
         booking_date VARCHAR(100) NOT NULL,
         booking_time VARCHAR(100) NOT NULL,
