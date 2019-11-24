@@ -1,2 +1,3 @@
 /node_modules/
 /barberia/node_modules/
+*.env
