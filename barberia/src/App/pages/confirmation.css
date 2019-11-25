@@ -1,0 +1,77 @@
+body {
+  background-color: #2e294e;
+  color: #c5d86d;
+}
+
+.header {
+  /* position: absolute; */
+  margin: 0 auto;
+  width: 300px;
+  height: 135px;
+  left: calc(50% - 300px / 2 - 0.5px);
+  top: 91px;
+
+  border: 2px solid #1b998b;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.confirmation_message {
+  position: absolute;
+  width: 270.9px;
+  height: 91.07px;
+  /* left: 40.43px; */
+  /* top: 10px; */
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+input[type="text"],
+input[type="email"],
+input[type="phone"] {
+  width: 321px;
+  height: 48.5px;
+  /* left: 25px; */
+  top: 255px;
+  border: 1px solid #c5d86d;
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin: 5px;
+}
+
+.email_checkbox_input {
+  position: relative;
+  /* left: 20px; */
+  text-align: left;
+  margin: 5px;
+}
+.phone_checkbox_input {
+  position: relative;
+  /* top: 40px; */
+}
+
+.submit {
+  width: 321px;
+  height: 70px;
+  left: 26px;
+  top: 564px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 29px;
+  line-height: 34px;
+  align-items: center;
+  text-align: center;
+
+  color: #2e294e;
+
+  background: #c5d86d;
+  border-radius: 20px;
+}
