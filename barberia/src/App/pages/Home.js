@@ -10,7 +10,7 @@ class Home extends Component {
         <Link to="/list">
           <button variant="raised">My List</button>
         </Link>
-        <Link to={"/calendar"}>
+        <Link to="/calendar">
           <button variant="raised">Calendar</button>
         </Link>
       </div>
