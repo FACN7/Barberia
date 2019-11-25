@@ -7,10 +7,10 @@ class Home extends Component {
       <div className="App">
         <h1>Project Home</h1>
         {/* Link to List.js */}
-        <Link to={"./list"}>
+        <Link to={"/list"}>
           <button variant="raised">My List</button>
         </Link>
-        <Link to={"./calendar"}>
+        <Link to={"/calendar"}>
           <button variant="raised">Calendar</button>
         </Link>
       </div>

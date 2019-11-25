@@ -1,6 +1,6 @@
 import React from "react";
 import AppointmentPicker from "appointment-picker";
-import "../../../node_modules/appointment-picker/dist/appointment-picker.css";
+import "appointment-picker/dist/appointment-picker.css";
 
 class AppoPicker extends React.Component {
   constructor(props) {
