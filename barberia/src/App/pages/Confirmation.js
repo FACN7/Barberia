@@ -7,16 +7,33 @@ function Confirmation() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [phone_checkbox, setPhone_checkbox] = useState(true);
+  const [email_checkbox, setEmail_checkbox] = useState(true);
 
   const collectInputName = event => setName(event.target.value);
   const collectInputEmail = event => setName(event.target.value);
   const collectInputPhone = event => setName(event.target.value);
 
   const handlePhoneCheckboxChange = event =>
-    // setPhone_checkbox({ checked: event.target.checked });
     setPhone_checkbox(checked => !checked);
 
-  console.log(phone_checkbox);
+  const handleEmailCheckboxChange = event =>
+    setEmail_checkbox(checked => !checked);
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    const data = { name, email, phone, phone_checkbox, email_checkbox };
+    localStorage.setItem("confirmationData", JSON.stringify(data));
+
+    const url = "/congratulation";
+    const response = fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+  };
 
   return (
     <div className="cofirmation-container">
@@ -26,7 +43,7 @@ function Confirmation() {
           Your appoitment is on November 26 at 16:30
         </h1>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <input
             type="text"
@@ -53,11 +70,16 @@ function Confirmation() {
         </div>
 
         <div className="email_checkbox_input">
-          <input type="checkbox" name="email_confirmation" value="" /> Send me
-          confirmation by Email
+          <input
+            type="checkbox"
+            name="email_confirmation"
+            checked={email_checkbox}
+            onChange={handleEmailCheckboxChange}
+          />{" "}
+          Send me confirmation by Email
         </div>
 
-        <div className="phone_checkbox_input2">
+        <div className="phone_checkbox_input">
           <input
             type="checkbox"
             name="phone_confirmation"
@@ -66,8 +88,6 @@ function Confirmation() {
           />{" "}
           Send me confirmation by Phone
         </div>
-        <br></br>
-        <br></br>
         <br></br>
 
         <input type="submit" className="submit" value="Confirm" />

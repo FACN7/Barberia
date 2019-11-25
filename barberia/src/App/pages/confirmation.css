@@ -20,10 +20,7 @@ body {
   position: absolute;
   width: 270.9px;
   height: 91.07px;
-  /* left: 40.43px; */
-  /* top: 10px; */
-
-  font-family: Roboto;
+  font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -37,7 +34,6 @@ input[type="email"],
 input[type="phone"] {
   width: 321px;
   height: 48.5px;
-  /* left: 25px; */
   top: 255px;
   border: 1px solid #c5d86d;
   box-sizing: border-box;
@@ -47,13 +43,10 @@ input[type="phone"] {
 
 .email_checkbox_input {
   position: relative;
-  /* left: 20px; */
-  text-align: left;
   margin: 5px;
 }
 .phone_checkbox_input {
   position: relative;
-  /* top: 40px; */
 }
 
 .submit {
@@ -61,7 +54,6 @@ input[type="phone"] {
   height: 70px;
   left: 26px;
   top: 564px;
-
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -69,9 +61,7 @@ input[type="phone"] {
   line-height: 34px;
   align-items: center;
   text-align: center;
-
   color: #2e294e;
-
   background: #c5d86d;
   border-radius: 20px;
 }
