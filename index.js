@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const queries = require('./src/queries');
 const app = express();
 
 // Serve the static files from the React app
@@ -12,9 +12,13 @@ app.get('/api/getList', (req,res) => {
     res.json(list);
     console.log('Sent list of items');
 });
-// app.get('/', (req,res) =>{
-//     res.send("Home Bage");
-// });
+app.get('/api/getAllBookings', (req,res) => {
+    queries.getAllBookings()
+    .then(bookings=> bookings.rows)
+    .then(rows=> res.json(rows))
+    .catch(err=> console.log(err));
+    
+});
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
     res.sendFile(path.join(__dirname+'/barberia/build/index.html'));
