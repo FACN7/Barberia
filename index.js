@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const queries = require('./src/queries/index');
+const queries = require('./src/queries');
 const app = express();
 
 // Serve the static files from the React app
@@ -15,18 +15,10 @@ app.get('/api/getList', (req,res) => {
 app.get('/api/getAllBookings', (req,res) => {
     queries.getAllBookings()
     .then(bookings=> bookings.rows)
-    .then(rows=> {
-        console.log('Sent list of items', rows);
-        return res.json(rows)
-    }).catch(err=> console.log(err));
-    // res.json(getAllBookings().rows);
-    // var list = ["item1", "item2", "item3"];
-    // res.json(list);
-
+    .then(rows=> res.json(rows))
+    .catch(err=> console.log(err));
+    
 });
-// app.get('/', (req,res) =>{
-//     res.send("Home Bage");
-// });
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
     res.sendFile(path.join(__dirname+'/barberia/build/index.html'));
