@@ -28,7 +28,6 @@ body {
 }
 
 .text_header {
-  /* position: relative; */
   width: 280px;
   height: 117px;
   left: 51px;
@@ -45,9 +44,3 @@ body {
 
   color: #c5d86d;
 }
-/* 
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
-  }
-} */
