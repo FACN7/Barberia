@@ -22,8 +22,8 @@ const AppoPicker = (props) => {
 
   React.useEffect(() => {
     const onTimeSelect = event => setTime(event.time);
-    let picker = new AppointmentPicker(pickerRef.current, options);
-    let currentRef = pickerRef.current;
+    const picker = new AppointmentPicker(pickerRef.current, options);
+    const currentRef = pickerRef.current;
     currentRef.addEventListener(
       "change.appo.picker",
       onTimeSelect
