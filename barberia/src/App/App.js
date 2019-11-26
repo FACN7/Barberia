@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./pages/Home"; //pages to be routed to
-import List from "./pages/List"; //pages to be routed to
 import Confirmation from "./pages/Confirmation"; //pages to be routed to
-
+import Home from "./pages/Home";
+import List from "./pages/List";
+import Calendar from "./pages/Calendar";
 import logo from "../logo.svg";
 import "./App.css";
 
@@ -15,21 +15,6 @@ function App() {
         <Route path="/list" component={List} />
         <Route path="/confirmation" component={Confirmation} />
       </Switch>
-
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
     </div>
   );
 }
