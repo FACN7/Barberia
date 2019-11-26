@@ -3,6 +3,12 @@ body {
   color: #c5d86d;
 }
 
+.error {
+  color: red;
+  font-size: 1rem;
+  font-style: italic;
+}
+
 .header {
   /* position: absolute; */
   margin: 0 auto;
@@ -34,11 +40,13 @@ input[type="email"],
 input[type="phone"] {
   width: 321px;
   height: 48.5px;
+
   top: 255px;
   border: 1px solid #c5d86d;
   box-sizing: border-box;
   border-radius: 20px;
   margin: 5px;
+  padding-left: 1%;
 }
 
 .email_checkbox_input {
