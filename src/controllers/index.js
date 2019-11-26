@@ -1,23 +1,10 @@
 const express = require("express");
 const queries = require("../queries");
-const bodyParser = require("body-parser");
 const router = express.Router();
 const path = require("path");
-// var sqlinjection = require("sql-injection");
 
 const app = express();
-// app.use(bodyParser.urlencoded({ extended: false }));
-const jsonparser = bodyParser.json();
 
-// app.configure(function() {
-//   app.use(sqlinjection); // add sql-injection middleware here
-// });
-
-router.get("/getList", (req, res) => {
-  var list = ["item1", "item2", "item3"];
-  res.json(list);
-  console.log("Sent list of items");
-});
 router.get("/getAllBookings", (req, res) => {
   queries
     .getAllBookings()
@@ -26,7 +13,7 @@ router.get("/getAllBookings", (req, res) => {
     .catch(err => console.log(err));
 });
 
-router.post("/savenewbooking", jsonparser, (req, res) => {
+router.post("/savenewbooking", (req, res) => {
   const data = req.body;
   queries.saveNewBooking(data).catch(err => console.log(err));
 });
