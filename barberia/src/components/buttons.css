@@ -1,0 +1,19 @@
+.hot-shit-button {
+    width: 232px;
+    height: 152px;
+    align-self: center;
+    background: #2E294E;
+    border-radius: 20px;
+    transform: rotate(-14deg);
+}
+
+.hot-shit-button_text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 33px;
+    line-height: 39px;
+    text-align: center;
+    color: #C5D86D;
+    transform: rotate(-14deg);
+}
