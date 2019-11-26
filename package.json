@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/FACN7/Barberia#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "env2": "^2.2.2",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
