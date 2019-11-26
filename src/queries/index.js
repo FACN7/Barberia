@@ -1,5 +1,7 @@
-const getAllBookings=require('./getAllBookings');
+const getAllBookings = require("./getAllBookings");
+const saveNewBooking = require("./saveNewBooking");
 
-module.exports={
-    getAllBookings
+module.exports = {
+  getAllBookings,
+  saveNewBooking
 };
