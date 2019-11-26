@@ -4,7 +4,6 @@ import "./congratulation.css";
 function congratulation() {
   const userData = JSON.parse(localStorage.getItem("confirmationData"));
   const { email, phone } = userData;
-  console.log(email, phone);
 
   return (
     <div>
