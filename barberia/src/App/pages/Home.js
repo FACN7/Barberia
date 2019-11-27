@@ -1,6 +1,7 @@
 import React from "react";
 import { HotShitButton, YellowButton } from "../components/buttons";
 import "../App.css"
+import "./Home.css"
 const Home = () => {
   return (
     <div className="App">
