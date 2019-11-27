@@ -3,7 +3,6 @@ import { useRoutes } from "hookrouter";
 import Confirmation from "./pages/Confirmation"; //pages to be routed to
 import Home from "./pages/Home";
 import List from "./pages/List";
-import Landing from "./pages/Landing";
 import Calendar from "./pages/Calendar";
 import BookingSchedule from "./pages/BookingSchedule";
 import "./App.css";
@@ -25,7 +24,6 @@ function App() {
         setFormDate={setFormDate}
       />
     ),
-    "/landing": () => <Landing />,
     "/confirmation": () => <Confirmation time={time} date={formDate} />,
     "/admin": () => <BookingSchedule />
   };

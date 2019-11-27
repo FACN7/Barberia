@@ -1,0 +1,8 @@
+.barberia-name h3{
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #C5D86D;
+  } 

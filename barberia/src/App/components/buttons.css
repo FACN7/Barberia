@@ -1,25 +1,43 @@
-.hot-shit-button{
-/* position: absolute; */
-width: 232px;
-height: 152px;
-/* left: 56px; */
-/* top: 170px; */
-align-self: center;
-
-background: #2E294E;
-border-radius: 20px;
-transform: rotate(-14deg);
+.hot-shit-button {
+    margin: 20px;
+    width: 232px;
+    height: 152px;
+    align-self: center;
+    background: #2E294E;
+    border-radius: 20px;
+    border: 2px solid #1B998B;
+    /* transform: rotate(-14deg); */
 }
 
-.hot-shit-button_text{
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 33px;
-line-height: 39px;
-text-align: center;
+.hot-shit-button h3 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    color: #C5D86D;
+}
 
-color: #C5D86D;
+.hot-shit-button p {
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 22px;
+    /* line-height: 30px; */
+    text-align: center;
+    color: #C5D86D;
+}
 
-transform: rotate(-14deg);
+.yellow-button {
+    text-align: center;
+    align-items: center;
+    box-shadow: 0px 0px 20px #2E294E;
+    width: 321px;
+    height: 70px;
+    background: #C5D86D;
+    border-radius: 20px;
+}
+
+.button-body {
+    height: 100%;
+    width: 100%;
 }
