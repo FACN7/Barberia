@@ -15,7 +15,6 @@ router.get("/getAllBookings", (req, res) => {
 
 router.post("/savenewbooking", (req, res) => {
   const data = req.body;
-  console.log(data);
 
   queries.saveNewBooking(data).catch(err => console.log(err));
 });
