@@ -4,15 +4,24 @@ import AppoPicker from "./TimePicker";
 import { A } from "hookrouter";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
+import { addDays } from "date-fns";
+import "./Calendar.css";
 
 function Calendar({ formDate, setFormDate, time, setTime }) {
   const [startDate, setStartDate] = React.useState(formDate || new Date());
+  const isWeekday = date => {
+    const day = date.getDay();
+    return day !== 5 && day !== 6;
+  };
 
   return (
     <div className="calendarContainer">
       <h1>Choose a date</h1>
       <DatePicker
         selected={startDate}
+        filterDate={isWeekday}
+        minDate={new Date()}
+        maxDate={addDays(new Date(), 20)}
         onChange={date => {
           setStartDate(date);
           setFormDate(date);
