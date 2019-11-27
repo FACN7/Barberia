@@ -8,4 +8,3 @@ const saveNewBooking = data => {
 };
 
 module.exports = saveNewBooking;
-

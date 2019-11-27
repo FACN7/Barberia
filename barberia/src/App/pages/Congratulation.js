@@ -1,9 +1,16 @@
 import React, { Component, useState } from "react";
+import { A } from "hookrouter";
 import "./congratulation.css";
 
-function congratulation() {
+function congratulation({ ...props }) {
   const userData = JSON.parse(localStorage.getItem("confirmationData"));
   const { email, phone } = userData;
+
+  const moveTo = destination => {
+    window.location.assign(destination);
+  };
+
+  const deleteLastBooking = () => {};
 
   return (
     <div>
@@ -14,8 +21,18 @@ function congratulation() {
         </h3>
       </div>
       <form>
-        <input type="submit" className="gohome_button" value="HOME" />
-        <input type="submit" className="cancel_button" value="Cancel" />
+        <input
+          type="button"
+          className="gohome_button"
+          value="HOME"
+          onClick={() => moveTo("/")}
+        />
+        <input
+          type="button"
+          className="cancel_button"
+          value="Cancel"
+          onClick={() => deleteLastBooking()}
+        />
       </form>
     </div>
   );

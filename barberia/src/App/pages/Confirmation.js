@@ -1,13 +1,19 @@
 import React, { Component, useState } from "react";
 
 import "./confirmation.css";
+import { convertDate, covertTime } from "./covertdate.js";
 
-function Confirmation() {
-  const [name, setName] = useState("");
+function Confirmation(props) {
+  //use function from covertdate.js  that return date and time filtered and not filtred
+  console.log(props.formDate);
+  const { filterd_date, not_filterd_date } = convertDate(props.formDate + "");
+  const { not_filterd_time, filterd_time } = covertTime(props.formDate + "");
+
+  //states that store form's user information
+  let [name, setName] = React.useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [error_ms, setError_ms] = useState("");
-
   const [phone_checkbox, setPhone_checkbox] = useState(true);
   const [email_checkbox, setEmail_checkbox] = useState(true);
 
@@ -15,10 +21,8 @@ function Confirmation() {
   const collectInputName = event => setName(event.target.value);
   const collectInputEmail = event => setEmail(event.target.value);
   const collectInputPhone = event => setPhone(event.target.value);
-
   const handlePhoneCheckboxChange = event =>
     setPhone_checkbox(checked => !checked);
-
   const handleEmailCheckboxChange = event =>
     setEmail_checkbox(checked => !checked);
 
@@ -46,10 +50,19 @@ function Confirmation() {
     event.preventDefault();
     if (validation()) {
       setError_ms("");
-      const date = "27112010";
-      const time = "1530";
+      const date = filterd_date;
+      const time = filterd_time;
+      console.log(date, time, "");
       const service = "1";
-      const data = { date, time, name, email, phone, service };
+      const data = {
+        date,
+        time,
+        name,
+        email,
+        phone,
+        service
+      };
+      console.log(JSON.stringify(data));
       localStorage.setItem("confirmationData", JSON.stringify(data));
 
       return fetch("/api/savenewbooking", {
@@ -58,7 +71,9 @@ function Confirmation() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
-      }).catch(err => console.log(err));
+      })
+        .then(window.location.assign("/congratulation"))
+        .catch(err => console.log(err));
     }
   };
 
@@ -67,7 +82,7 @@ function Confirmation() {
       <h1>Confirmation</h1>
       <div className="header">
         <h1 className="confirmation_message">
-          Your appoitment is on November 26 at 17:00
+          Your appoitment is on {not_filterd_date} at {not_filterd_time}
         </h1>
       </div>
       <form onSubmit={handleSubmit}>

@@ -6,6 +6,13 @@ import Home from "./pages/Home";
 import List from "./pages/List";
 import Landing from "./pages/Landing";
 import Calendar from "./pages/Calendar";
+import Congratulation from "./pages/Congratulation";
+
+//return name stat to confirm page anfd fix all related thing
+//talk about date convert
+//talk about time at calendar component
+//check if still have problem saving to db
+
 import BookingSchedule from "./pages/BookingSchedule";
 import logo from "../logo.svg";
 import "./App.css";
@@ -21,7 +28,8 @@ function App() {
       <Calendar formDate={formDate} setFormDate={setFormDate} />
     ),
     "/landing": () => <Landing />,
-    "/confirmation": () => <Confirmation />
+    "/confirmation": () => <Confirmation formDate={formDate} />,
+    "/congratulation": () => <Congratulation />
   };
   const routeResult = useRoutes(routes);
 
