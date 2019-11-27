@@ -6,8 +6,8 @@ import { convertDate, covertTime } from "./covertdate.js";
 
 function Confirmation({ time, formDate, ...props }) {
   //use function from covertdate.js  that return date and time filtered and not filtred
-  const { filterd_date, not_filterd_date } = convertDate(formDate + "");
-
+  const { filterd_date, not_filterd_date } = convertDate(formDate);
+  console.log(time);
   //states that store form's user information
   let [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -137,7 +137,7 @@ function Confirmation({ time, formDate, ...props }) {
       </form>
       <p>date picked is {moment(formDate.toJSON()).format("MMM Do YY")}</p>
       <p>
-        time picked is {time} <br />
+        time picked is {time.toString()} <br />
       </p>
     </div>
   );
