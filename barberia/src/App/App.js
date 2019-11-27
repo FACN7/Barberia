@@ -11,9 +11,8 @@ import "./App.css";
 function App() {
   //set date state on higher level to use in all other pages, sent setters and getters to apropriate components (look at calendar for ex.)
   let [formDate, setFormDate] = React.useState(new Date());
-
   let [time, setTime] = React.useState(new Date());
-  console.log("time is : ", time);
+
   //refactored the router to use hooks (it had Switch and all that crap)
   const routes = {
     "/": () => <Home />,
@@ -27,7 +26,7 @@ function App() {
       />
     ),
     "/landing": () => <Landing />,
-    "/confirmation": () => <Confirmation />,
+    "/confirmation": () => <Confirmation time={time} date={formDate} />,
     "/admin": () => <BookingSchedule />
   };
   const routeResult = useRoutes(routes);

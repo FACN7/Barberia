@@ -23,7 +23,8 @@ function Calendar({ formDate, setFormDate, time, setTime }) {
       <AppoPicker time={time} setTime={setTime} />
       <p>date picked is {moment(startDate.toJSON()).format("MMM Do YY")}</p>
       <p>
-        time picked is {moment(time).format("LT")} <br />
+        time picked is {moment(time).format("LT")} OR {time.toString()}
+        <br />
       </p>
 
       <A href="/confirmation">Continue</A>

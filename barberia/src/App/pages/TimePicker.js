@@ -6,7 +6,7 @@ const AppoPicker = props => {
   const [options, setOptions] = React.useState({
     leadingZero: true,
     interval: 30,
-    mode: "12h",
+    mode: "24h",
     minTime: 10,
     maxTime: 21,
     startTime: 9,
@@ -19,8 +19,8 @@ const AppoPicker = props => {
 
   React.useEffect(() => {
     const onTimeSelect = event => {
-      setTime(event.time);
-      props.setTime(event.time);
+      setTime(event.displayTime);
+      props.setTime(event.displayTime);
     };
     const picker = new AppointmentPicker(pickerRef.current, options);
     const currentRef = pickerRef.current;
