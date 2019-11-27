@@ -6,14 +6,14 @@ function congratulation({ ...props }) {
   const userData = JSON.parse(localStorage.getItem("confirmationData"));
   const { email, phone, name } = userData;
 
-  console.log(JSON.stringify(userData));
+  // console.log(JSON.stringify(userData));
 
   const moveTo = home => {
     window.location.assign(home);
   };
 
   const deleteLastBooking = () => {
-    
+
     return fetch("/api/cancelbooking", {
       method: "POST",
       headers: {
