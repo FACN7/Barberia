@@ -1,8 +1,9 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
+import moment from "moment";
 
 import "./confirmation.css";
 
-function Confirmation() {
+function Confirmation({ date, time }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -46,8 +47,6 @@ function Confirmation() {
     event.preventDefault();
     if (validation()) {
       setError_ms("");
-      const date = "27112010";
-      const time = "1530";
       const service = "1";
       const data = { date, time, name, email, phone, service };
       localStorage.setItem("confirmationData", JSON.stringify(data));
@@ -124,6 +123,10 @@ function Confirmation() {
 
         <input type="submit" className="submit" value="Confirm" />
       </form>
+      <p>date picked is {moment(date.toJSON()).format("MMM Do YY")}</p>
+      <p>
+        time picked is {time} <br />
+      </p>
     </div>
   );
 }

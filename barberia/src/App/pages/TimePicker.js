@@ -2,13 +2,11 @@ import React from "react";
 import AppointmentPicker from "appointment-picker";
 import "appointment-picker/dist/appointment-picker.css";
 
-
-
-const AppoPicker = (props) => {
+const AppoPicker = props => {
   const [options, setOptions] = React.useState({
     leadingZero: true,
     interval: 30,
-    mode: "12h",
+    mode: "24h",
     minTime: 10,
     maxTime: 21,
     startTime: 9,
@@ -19,27 +17,25 @@ const AppoPicker = (props) => {
 
   const pickerRef = React.createRef();
 
-
   React.useEffect(() => {
-    const onTimeSelect = event => setTime(event.time);
+    const onTimeSelect = event => {
+      setTime(event.displayTime);
+      props.setTime(event.displayTime);
+    };
     const picker = new AppointmentPicker(pickerRef.current, options);
     const currentRef = pickerRef.current;
-    currentRef.addEventListener(
-      "change.appo.picker",
-      onTimeSelect
-    );
+    currentRef.addEventListener("change.appo.picker", onTimeSelect);
     return () => {
       currentRef.removeEventListener("change.appo.picker", onTimeSelect);
       picker.destroy();
-    }
+    };
   }, []);
 
   return (
     <div>
       <input type="text" ref={pickerRef}></input>
-      {/*<code>{JSON.stringify(time)}</code>*/}
     </div>
   );
-}
+};
 
 export default AppoPicker;
