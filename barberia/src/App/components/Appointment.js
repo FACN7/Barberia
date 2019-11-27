@@ -1,19 +1,23 @@
 import React from "react";
 import "./Appointment.css";
+import moment from "moment";
 
 function Appointment({ item }) {
   return (
     <div key={item.booking_id} className="appointment">
       <div className="booking-header">
-        <div className="booking-date">{item.booking_date}</div>
+        <div className="booking-date">#{item.booking_id}</div>
         <div className="booking-cancel">
           <button className="cancel-button">CANCEL</button>
         </div>
       </div>
       <div className="booking-info">
         <div className="booking-column left">
+          <div className="booking-service">
+            {moment(item.booking_date).format("MMM Do YY")}
+          </div>
           <div className="booking-time">{item.booking_time}</div>
-          <div className="booking-service">{item.booking_id}</div>
+          <div className="booking-service">Service: {item.service_id}</div>
         </div>
         <div className="booking-column right">
           <div className="booking-customername">

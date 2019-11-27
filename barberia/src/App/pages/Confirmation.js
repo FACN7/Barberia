@@ -1,18 +1,18 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
+import moment from "moment";
 
 import "./confirmation.css";
 import { convertDate, covertTime } from "./covertdate.js";
 
-function Confirmation(props) {
+function Confirmation({ time, formDate, ...props }) {
   //use function from covertdate.js  that return date and time filtered and not filtred
   console.log(props.formDate);
-  const { filterd_date, not_filterd_date } = convertDate(props.formDate + "");
-  const { not_filterd_time, filterd_time } = covertTime(props.formDate + "");
+  const { filterd_date, not_filterd_date } = convertDate(formDate + "");
 
   //states that store form's user information
-  let [name, setName] = React.useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  let [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [phone, setPhone] = useState(null);
   const [error_ms, setError_ms] = useState("");
   const [phone_checkbox, setPhone_checkbox] = useState(true);
   const [email_checkbox, setEmail_checkbox] = useState(true);
@@ -29,16 +29,16 @@ function Confirmation(props) {
   //function that check all inputs and set a error message if somthing missing
   const validation = () => {
     let flag = true;
-    if (name === "") {
+    if (name === null) {
       setError_ms("* name input must be valide");
       flag = false;
     } else if (!phone_checkbox && !email_checkbox) {
       setError_ms("* Please choose how to get confirmation");
       flag = false;
-    } else if (email_checkbox && email === "") {
+    } else if (email_checkbox && email === null) {
       setError_ms("* Please enter valid email");
       flag = false;
-    } else if (phone_checkbox && phone === "") {
+    } else if (phone_checkbox && phone === null) {
       setError_ms("* Please enter valid phone");
       flag = false;
     }
@@ -51,8 +51,6 @@ function Confirmation(props) {
     if (validation()) {
       setError_ms("");
       const date = filterd_date;
-      const time = filterd_time;
-      console.log(date, time, "");
       const service = "1";
       const data = {
         date,
@@ -62,7 +60,6 @@ function Confirmation(props) {
         phone,
         service
       };
-      console.log(JSON.stringify(data));
       localStorage.setItem("confirmationData", JSON.stringify(data));
 
       return fetch("/api/savenewbooking", {
@@ -82,7 +79,7 @@ function Confirmation(props) {
       <h1>Confirmation</h1>
       <div className="header">
         <h1 className="confirmation_message">
-          Your appoitment is on {not_filterd_date} at {not_filterd_time}
+          Your appoitment is on {not_filterd_date} at {time.toString()}
         </h1>
       </div>
       <form onSubmit={handleSubmit}>
@@ -139,6 +136,10 @@ function Confirmation(props) {
 
         <input type="submit" className="submit" value="Confirm" />
       </form>
+      <p>date picked is {moment(formDate.toJSON()).format("MMM Do YY")}</p>
+      <p>
+        time picked is {time} <br />
+      </p>
     </div>
   );
 }
