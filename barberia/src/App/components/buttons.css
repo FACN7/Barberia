@@ -6,7 +6,7 @@
     background: #2E294E;
     border-radius: 20px;
     border: 2px solid #1B998B;
-    /* transform: rotate(-14deg); */
+    transform: rotate(-14deg);
 }
 
 .hot-shit-button h3 {

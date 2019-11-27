@@ -10,7 +10,8 @@ const HotShitButton = props => {
     <div className="hot-shit-button" >
       <A href={props.href}>
         <div className="button-body">
-          {props.children}
+          <h3>{props.title}</h3>
+          <p>{props.description}</p>
         </div>
       </A>
     </div>
