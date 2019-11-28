@@ -1,8 +1,35 @@
-.barberia-name h3{
-    font-family: 'Pacifico', cursive;
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #C5D86D;
-  } 
+.barberia-name h3 {
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #C5D86D;
+}
+
+.location-button img {
+  height: 40px;
+}
+
+.location-button * {
+  font-size: 30px;
+  text-decoration: none;
+  color: #2e294e;
+  justify-content: center;
+}
+
+.location-button {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  text-align: center;
+  align-items: center;
+  box-shadow: 0px 0px 20px #2e294e;
+  width: 100%;
+  height: 70px;
+  background: #c5d86d;
+  /* border-radius: 20px; */
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
