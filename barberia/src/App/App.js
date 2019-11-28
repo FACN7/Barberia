@@ -4,6 +4,13 @@ import Confirmation from "./pages/Confirmation"; //pages to be routed to
 import Home from "./pages/Home";
 import List from "./pages/List";
 import Calendar from "./pages/Calendar";
+import Congratulation from "./pages/Congratulation";
+
+//return name stat to confirm page anfd fix all related thing
+//talk about date convert
+//talk about time at calendar component
+//check if still have problem saving to db
+
 import BookingSchedule from "./pages/BookingSchedule";
 import "./App.css";
 
@@ -24,7 +31,8 @@ function App() {
         setFormDate={setFormDate}
       />
     ),
-    "/confirmation": () => <Confirmation time={time} date={formDate} />,
+    "/congratulation": () => <Congratulation />,
+    "/confirmation": () => <Confirmation time={time} formDate={formDate} />,
     "/admin": () => <BookingSchedule />
   };
   const routeResult = useRoutes(routes);

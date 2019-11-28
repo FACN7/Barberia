@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import "./congratulation.css";
 
 function congratulation() {
@@ -6,7 +6,7 @@ function congratulation() {
   const { email, phone } = userData;
 
   return (
-    <div>
+    <div className="App">
       <div className="ms_header">
         <h3 className="text_header">
           Congratulation, your appointment is booked at Nazareth, El-ein We sent

@@ -2,6 +2,12 @@ body {
   background-image: url("https://files.gitter.im/nataphilips/P5Yv/f5914630266819.561b97bba5262.jpg");
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .ms_header {
   position: absolute;
   width: 300px;
@@ -41,6 +47,8 @@ body {
   display: flex;
   align-items: center;
   text-align: center;
+  margin: 0px;
+  margin-top: 30px;
 
   color: #c5d86d;
 }
