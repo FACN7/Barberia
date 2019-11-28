@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { addDays } from "date-fns";
 import "./Calendar.css";
+import { YellowButton } from "../components/buttons.js";
 
 function Calendar({ formDate, setFormDate, time, setTime }) {
   const [startDate, setStartDate] = React.useState(formDate || new Date());
@@ -32,11 +33,10 @@ function Calendar({ formDate, setFormDate, time, setTime }) {
       <AppoPicker time={time} setTime={setTime} />
       <p>date picked is {moment(startDate.toJSON()).format("MMM Do YY")}</p>
       <p>
-        time picked is {moment(time).format("LT")} OR {time.toString()}
+        time picked is {time.toString()}
         <br />
       </p>
-
-      <A href="/confirmation">Continue</A>
+      <YellowButton href="/confirmation">Continue</YellowButton>
     </div>
   );
 }

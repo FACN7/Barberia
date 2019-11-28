@@ -3,12 +3,12 @@ import moment from "moment";
 
 import "./confirmation.css";
 
-function Confirmation({ date, time }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+function Confirmation({ time, formDate, ...props }) {
+  //states that store form's user information
+  let [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [phone, setPhone] = useState(null);
   const [error_ms, setError_ms] = useState("");
-
   const [phone_checkbox, setPhone_checkbox] = useState(true);
   const [email_checkbox, setEmail_checkbox] = useState(true);
 
@@ -16,26 +16,24 @@ function Confirmation({ date, time }) {
   const collectInputName = event => setName(event.target.value);
   const collectInputEmail = event => setEmail(event.target.value);
   const collectInputPhone = event => setPhone(event.target.value);
-
   const handlePhoneCheckboxChange = event =>
     setPhone_checkbox(checked => !checked);
-
   const handleEmailCheckboxChange = event =>
     setEmail_checkbox(checked => !checked);
 
   //function that check all inputs and set a error message if somthing missing
   const validation = () => {
     let flag = true;
-    if (name === "") {
+    if (name === null) {
       setError_ms("* name input must be valide");
       flag = false;
     } else if (!phone_checkbox && !email_checkbox) {
       setError_ms("* Please choose how to get confirmation");
       flag = false;
-    } else if (email_checkbox && email === "") {
+    } else if (email_checkbox && email === null) {
       setError_ms("* Please enter valid email");
       flag = false;
-    } else if (phone_checkbox && phone === "") {
+    } else if (phone_checkbox && phone === null) {
       setError_ms("* Please enter valid phone");
       flag = false;
     }
@@ -47,8 +45,16 @@ function Confirmation({ date, time }) {
     event.preventDefault();
     if (validation()) {
       setError_ms("");
+      const date = formDate;
       const service = "1";
-      const data = { date, time, name, email, phone, service };
+      const data = {
+        date,
+        time,
+        name,
+        email,
+        phone,
+        service
+      };
       localStorage.setItem("confirmationData", JSON.stringify(data));
 
       return fetch("/api/savenewbooking", {
@@ -57,16 +63,19 @@ function Confirmation({ date, time }) {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
-      }).catch(err => console.log(err));
+      })
+        .then(window.location.assign("/congratulation"))
+        .catch(err => console.log(err));
     }
   };
 
   return (
-    <div className="cofirmation-container">
+    <div className="cofirmation-container App">
       <h1>Confirmation</h1>
       <div className="header">
         <h1 className="confirmation_message">
-          Your appoitment is on November 26 at 17:00
+          Your appoitment is on {moment(formDate.toJSON()).format("MMM Do YY")}{" "}
+          at {time.toString()}
         </h1>
       </div>
       <form onSubmit={handleSubmit}>
@@ -123,7 +132,7 @@ function Confirmation({ date, time }) {
 
         <input type="submit" className="submit" value="Confirm" />
       </form>
-      <p>date picked is {moment(date.toJSON()).format("MMM Do YY")}</p>
+      <p>date picked is {moment(formDate.toJSON()).format("MMM Do YY")}</p>
       <p>
         time picked is {time} <br />
       </p>
