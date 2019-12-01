@@ -11,9 +11,21 @@ const AppoPicker = props => {
     maxTime: 21,
     startTime: 9,
     endTime: 23,
-    disabled: ["1330", "1400", "1030", "1700"]
+    disabled: []
   });
+
   const [time, setTime] = React.useState({});
+
+  React.useEffect(() => {
+    fetch("/api/getBusyTimeSlots")
+      .then(res => res.json())
+      .then(obj => obj.map(x => x.booking_time))
+      .then(arr => {
+        const newOptions = JSON.parse(JSON.stringify(options));
+        newOptions.disabled = arr;
+        setOptions(newOptions);
+      });
+  }, []);
 
   const pickerRef = React.createRef();
 
@@ -22,14 +34,14 @@ const AppoPicker = props => {
       setTime(event.displayTime);
       props.setTime(event.displayTime);
     };
-    const picker = new AppointmentPicker(pickerRef.current, options);
+    let picker = new AppointmentPicker(pickerRef.current, options);
     const currentRef = pickerRef.current;
     currentRef.addEventListener("change.appo.picker", onTimeSelect);
     return () => {
       currentRef.removeEventListener("change.appo.picker", onTimeSelect);
       picker.destroy();
     };
-  }, []);
+  }, [options]);
 
   return (
     <div>
