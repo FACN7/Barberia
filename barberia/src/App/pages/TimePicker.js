@@ -11,7 +11,7 @@ const AppoPicker = props => {
     maxTime: 21,
     startTime: 9,
     endTime: 23,
-    disabled: ["1:30 pm", "2:00 pm", "7:30 pm"]
+    disabled: ["1330", "1400", "1030", "1700"]
   });
   const [time, setTime] = React.useState({});
 
