@@ -3,7 +3,7 @@ import moment from "moment";
 
 import "./confirmation.css";
 
-function Confirmation({ time, formDate, ...props }) {
+function Confirmation({ time, formDate, baseDate, ...props }) {
   //states that store form's user information
   let [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -45,15 +45,13 @@ function Confirmation({ time, formDate, ...props }) {
     event.preventDefault();
     if (validation()) {
       setError_ms("");
-      const date = formDate;
-      const service = "1";
       const data = {
-        date,
-        time,
+        date: baseDate,
+        time: time.slice(0, 2) + time.slice(3),
         name,
         email,
         phone,
-        service
+        service: "1"
       };
       localStorage.setItem("confirmationData", JSON.stringify(data));
 
