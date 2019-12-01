@@ -19,8 +19,13 @@ router.post("/savenewbooking", (req, res) => {
   queries.saveNewBooking(data).catch(err => console.log(err));
 });
 
+router.post("/cancelbooking", (req, res) => {
+  const data = req.body;
+
+  queries.cancelbooking(data).catch(err => console.log(err));
+});
+
 router.get("*", (req, res) => {
-  console.log("you arrived at a none query page");
   res.sendFile(path.join(__dirname + "/barberia/build/index.html"));
 });
 

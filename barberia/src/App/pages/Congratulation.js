@@ -4,13 +4,24 @@ import "./congratulation.css";
 
 function congratulation({ ...props }) {
   const userData = JSON.parse(localStorage.getItem("confirmationData"));
-  const { email, phone } = userData;
+  const { email, phone, name } = userData;
 
-  const moveTo = destination => {
-    window.location.assign(destination);
+  const moveTo = home => {
+    window.location.assign(home);
   };
 
-  const deleteLastBooking = () => {};
+  const deleteLastBooking = () => {
+
+    return fetch("/api/cancelbooking", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userData)
+    })
+      .then(window.location.assign("/"))
+      .catch(err => console.log(err));
+  };
 
   return (
     <div>
