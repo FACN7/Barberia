@@ -2,19 +2,11 @@ import React, { useState } from "react";
 import moment from "moment";
 
 import "./confirmation.css";
-<<<<<<< HEAD
+
 
 function Confirmation({ time, formDate, baseDate, ...props }) {
-=======
-import { convertDate, covertTime } from "./covertdate.js";
-
-function Confirmation({ time, formDate, ...props }) {
-  //use function from covertdate.js  that return date and time filtered and not filtred
-  const { filterd_date, not_filterd_date } = convertDate(formDate);
-  console.log(time);
->>>>>>> origin/cancelbutton
   //states that store form's user information
-  let [name, setName] = useState(null);
+  const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [phone, setPhone] = useState(null);
   const [error_ms, setError_ms] = useState("");
