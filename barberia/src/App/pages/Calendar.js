@@ -1,15 +1,20 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import AppoPicker from "./TimePicker";
-import { A } from "hookrouter";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { addDays } from "date-fns";
 import "./Calendar.css";
 import { YellowButton } from "../components/buttons.js";
 
-function Calendar({ formDate, setFormDate, time, setTime }) {
-  const [startDate, setStartDate] = React.useState(formDate || new Date());
+function Calendar({
+  formDate,
+  setFormDate,
+  time,
+  setTime,
+  setBaseDate,
+  baseDate
+}) {
   const isWeekday = date => {
     const day = date.getDay();
     return day !== 5 && day !== 6;
@@ -19,21 +24,22 @@ function Calendar({ formDate, setFormDate, time, setTime }) {
     <div className="calendarContainer">
       <h1>Choose a date</h1>
       <DatePicker
-        selected={startDate}
+        selected={formDate}
         filterDate={isWeekday}
         minDate={new Date()}
         maxDate={addDays(new Date(), 20)}
         onChange={date => {
-          setStartDate(date);
           setFormDate(date);
+          setBaseDate(moment(date).format("YYYYMMDD"));
         }}
         inline
       />
 
       <AppoPicker time={time} setTime={setTime} />
-      <p>date picked is {moment(startDate.toJSON()).format("MMM Do YY")}</p>
       <p>
         time picked is {time.toString()}
+        <br />
+        base date: {baseDate}
         <br />
       </p>
       <YellowButton href="/confirmation">Continue</YellowButton>
