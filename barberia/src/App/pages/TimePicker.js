@@ -2,7 +2,7 @@ import React from "react";
 import AppointmentPicker from "appointment-picker";
 import "appointment-picker/dist/appointment-picker.css";
 
-const AppoPicker = props => {
+const AppoPicker = ({ baseDate, ...props }) => {
   const [options, setOptions] = React.useState({
     leadingZero: true,
     interval: 30,
@@ -17,15 +17,20 @@ const AppoPicker = props => {
   const [time, setTime] = React.useState({});
 
   React.useEffect(() => {
-    fetch("/api/getBusyTimeSlots")
+    fetch("/api/getBusyTimeSlots/" + baseDate)
       .then(res => res.json())
       .then(obj => obj.map(x => x.booking_time))
       .then(arr => {
         const newOptions = JSON.parse(JSON.stringify(options));
         newOptions.disabled = arr;
         setOptions(newOptions);
+      })
+      .catch(err => {
+        const newOptions = JSON.parse(JSON.stringify(options));
+        newOptions.disabled = [];
+        setOptions(newOptions);
       });
-  }, []);
+  }, [baseDate]);
 
   const pickerRef = React.createRef();
 
