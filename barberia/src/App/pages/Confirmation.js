@@ -3,9 +3,10 @@ import moment from "moment";
 
 import "./confirmation.css";
 
+
 function Confirmation({ time, formDate, baseDate, ...props }) {
   //states that store form's user information
-  let [name, setName] = useState(null);
+  const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [phone, setPhone] = useState(null);
   const [error_ms, setError_ms] = useState("");
@@ -132,7 +133,7 @@ function Confirmation({ time, formDate, baseDate, ...props }) {
       </form>
       <p>date picked is {moment(formDate.toJSON()).format("MMM Do YY")}</p>
       <p>
-        time picked is {time} <br />
+        time picked is {time.toString()} <br />
       </p>
     </div>
   );
