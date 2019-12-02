@@ -33,6 +33,11 @@ router.post("/cancelbooking", (req, res) => {
   queries.cancelbooking(data).catch(err => console.log(err));
 });
 
+router.post("/adminCancelAppointment", (req, res) => {
+  const id = req.body;
+  queries.adminCancelAppointment(id).catch(err => console.log(err));
+});
+
 router.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/barberia/build/index.html"));
 });
