@@ -19,15 +19,26 @@ router.post("/savenewbooking", (req, res) => {
   queries.saveNewBooking(data).catch(err => console.log(err));
 });
 
-router.post("/cancelbooking", (req, res) => {
-  console.log("here");
-  const data = req.body;
+router.get("/getBusyTimeSlots/:date", (req, res) => {
+  const date = req.params.date;
+  queries
+    .getBusyTimeSlots(date)
+    .then(times => times.rows)
+    .then(rows => res.json(rows))
+    .catch(err => console.log(err));
+});
 
+router.post("/cancelbooking", (req, res) => {
+  const data = req.body;
   queries.cancelbooking(data).catch(err => console.log(err));
 });
 
+router.post("/adminCancelAppointment", (req, res) => {
+  const id = req.body;
+  queries.adminCancelAppointment(id).catch(err => console.log(err));
+});
+
 router.get("*", (req, res) => {
-  console.log("you arrived at a none query page");
   res.sendFile(path.join(__dirname + "/barberia/build/index.html"));
 });
 

@@ -3,12 +3,32 @@ import "./Appointment.css";
 import moment from "moment";
 
 function Appointment({ item }) {
+  function adminCancelAppointment() {
+    const id = item.booking_id;
+
+    return (
+      fetch("/api/admincancelappointment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ id })
+      })
+        .catch(err => console.log(err))
+    );
+  }
+
   return (
     <div key={item.booking_id} className="appointment">
       <div className="booking-header">
         <div className="booking-date">#{item.booking_id}</div>
         <div className="booking-cancel">
-          <button className="cancel-button">CANCEL</button>
+          <button
+            className="cancel-button"
+            onClick={() => adminCancelAppointment()}
+          >
+            CANCEL
+          </button>
         </div>
       </div>
       <div className="booking-info">
