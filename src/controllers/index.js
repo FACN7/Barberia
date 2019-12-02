@@ -19,9 +19,10 @@ router.post("/savenewbooking", (req, res) => {
   queries.saveNewBooking(data).catch(err => console.log(err));
 });
 
-router.get("/getBusyTimeSlots", (req, res) => {
+router.get("/getBusyTimeSlots/:date", (req, res) => {
+  const date = req.params.date;
   queries
-    .getBusyTimeSlots()
+    .getBusyTimeSlots(date)
     .then(times => times.rows)
     .then(rows => res.json(rows))
     .catch(err => console.log(err));
