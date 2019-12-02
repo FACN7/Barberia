@@ -35,7 +35,7 @@ function Calendar({
         inline
       />
 
-      <AppoPicker time={time} setTime={setTime} />
+      <AppoPicker time={time} setTime={setTime} baseDate={baseDate} />
       <p>
         time picked is {time.toString()}
         <br />
