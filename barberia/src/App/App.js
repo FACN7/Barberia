@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import List from "./pages/List";
 import Calendar from "./pages/Calendar";
 import Congratulation from "./pages/Congratulation";
+import Signin from "./pages/Signin";
+import AdminWorkingDays from "./pages/AdminWorkingDays";
 import moment from "moment";
 
 //return name stat to confirm page anfd fix all related thing
@@ -40,10 +42,12 @@ function App() {
       />
     ),
     "/congratulation": () => <Congratulation />,
+    "/signin": () => <Signin />,
     "/confirmation": () => (
       <Confirmation time={time} formDate={formDate} baseDate={baseDate} />
     ),
-    "/admin": () => <BookingSchedule />
+    "/admin": () => <BookingSchedule />,
+    "/adminworkingdays": () => <AdminWorkingDays />
   };
   const routeResult = useRoutes(routes);
 

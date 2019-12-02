@@ -28,6 +28,25 @@ router.get("/getBusyTimeSlots/:date", (req, res) => {
     .catch(err => console.log(err));
 });
 
+router.get("/cancelschedulebyday/:day", (req, res) => {
+  const day = req.params.day;
+  queries.cancelschedulebyday(day).catch(err => console.log(err));
+});
+
+router.get("/getallhours/:day", (req, res) => {
+  const day = req.params.day;
+  queries
+    .getallhours(day)
+    .then(hours => hours.rows)
+    .then(rows => res.json(rows))
+    .catch(err => console.log(err));
+});
+
+router.post("/insertdaytoscedule", (req, res) => {
+  const data = req.body;
+  queries.insertdaytoscedule(data).catch(err => console.log(err));
+});
+
 router.post("/cancelbooking", (req, res) => {
   const data = req.body;
   queries.cancelbooking(data).catch(err => console.log(err));

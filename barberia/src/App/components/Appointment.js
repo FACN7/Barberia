@@ -6,16 +6,13 @@ function Appointment({ item }) {
   function adminCancelAppointment() {
     const id = item.booking_id;
 
-    return (
-      fetch("/api/admincancelappointment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ id })
-      })
-        .catch(err => console.log(err))
-    );
+    return fetch("/api/admincancelappointment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ id })
+    }).catch(err => console.log(err));
   }
 
   return (
