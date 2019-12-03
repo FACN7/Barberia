@@ -3,8 +3,7 @@ import moment from "moment";
 
 import "./confirmation.css";
 
-
-function Confirmation({ time, formDate, baseDate, ...props }) {
+function Confirmation({ serviceInUse, time, formDate, baseDate, ...props }) {
   //states that store form's user information
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -52,7 +51,7 @@ function Confirmation({ time, formDate, baseDate, ...props }) {
         name,
         email,
         phone,
-        service: "1"
+        service: serviceInUse
       };
       localStorage.setItem("confirmationData", JSON.stringify(data));
 
@@ -73,8 +72,8 @@ function Confirmation({ time, formDate, baseDate, ...props }) {
       <h1>Confirmation</h1>
       <div className="header">
         <h1 className="confirmation_message">
-          Your appoitment is on {moment(formDate.toJSON()).format("MMM Do YY")}{" "}
-          at {time.toString()}
+          .... Your appoitment is on{" "}
+          {moment(formDate.toJSON()).format("MMM Do YY")} at {time.toString()}
         </h1>
       </div>
       <form onSubmit={handleSubmit}>

@@ -1,0 +1,59 @@
+.sevice_container {
+  background-color: #c5d86d;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  color: #2e294e;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 20px;
+  font-family: Roboto;
+}
+
+.service-header {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.service_info {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.service_price {
+  max-width: 50%;
+  padding: 5px;
+  margin-right: auto;
+}
+.sevice_button_div {
+  max-width: 50%;
+}
+
+.booking-column {
+  width: 50%;
+}
+
+.booking-column div {
+  padding: 5px;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.sevice_button {
+  background-color: #2e294e;
+  border-radius: 5px;
+  color: #c5d86d;
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  font-family: Roboto;
+}
