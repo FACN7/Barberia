@@ -1,8 +1,6 @@
 import React from "react";
 import IntervalViewer from "../components/IntervalViewer";
 function AdminWorkingDays() {
-  const [list, setList] = React.useState([]);
-
 
   return (
     <div className="App">
