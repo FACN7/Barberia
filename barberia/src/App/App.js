@@ -6,6 +6,8 @@ import List from "./pages/List";
 import Calendar from "./pages/Calendar";
 import Congratulation from "./pages/Congratulation";
 import Signin from "./pages/Signin";
+import Services from "./pages/Services";
+
 import AdminWorkingDays from "./pages/AdminWorkingDays";
 import moment from "moment";
 
@@ -26,6 +28,30 @@ function App() {
   let [time, setTime] = React.useState(
     moment(new Date(), "hmm").format("HHmm")
   );
+  let [serviceInUse, setServiceInUse] = React.useState(1);
+  let [service, setService] = React.useState([
+    { service_id: 1, price: "25$", info: ["* regular hair cut", "* Shampoo"] },
+    {
+      service_id: 2,
+      price: "66$",
+      info: ["* regular hair cut", "* Beard trim"]
+    },
+    {
+      service_id: 3,
+      price: "100$",
+      info: ["* Basic beard trim", "* buz hair cut", "* somthing else"]
+    },
+    {
+      service_id: 4,
+      price: "30$",
+      info: ["* Long hair", "* somthing else"]
+    },
+    {
+      service_id: 5,
+      price: "15$",
+      info: ["* red beard", "* Ears "]
+    }
+  ]);
 
   //refactored the router to use hooks (it had Switch and all that crap)
   const routes = {
@@ -43,8 +69,21 @@ function App() {
     ),
     "/congratulation": () => <Congratulation />,
     "/signin": () => <Signin />,
+    "/services": () => (
+      <Services
+        setServiceInUse={setServiceInUse}
+        serviceInUse={serviceInUse}
+        service={service}
+      />
+    ),
+
     "/confirmation": () => (
-      <Confirmation time={time} formDate={formDate} baseDate={baseDate} />
+      <Confirmation
+        time={time}
+        serviceInUse={serviceInUse}
+        formDate={formDate}
+        baseDate={baseDate}
+      />
     ),
     "/admin": () => <BookingSchedule />,
     "/adminworkingdays": () => <AdminWorkingDays />
