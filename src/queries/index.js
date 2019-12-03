@@ -4,8 +4,7 @@ const getBusyTimeSlots = require("./getUnavailableTimes");
 const cancelbooking = require("./cancelbooking");
 const adminCancelAppointment = require("./adminCancelAppointment");
 const {
-  cancelschedulebyday,
-  insertdaytoscedule,
+   modifyworkingday,
   getallhours
 } = require("./adminHoursQueries");
 
@@ -15,7 +14,6 @@ module.exports = {
   cancelbooking,
   adminCancelAppointment,
   getBusyTimeSlots,
-  cancelschedulebyday,
-  insertdaytoscedule,
+  modifyworkingday,
   getallhours
 };
