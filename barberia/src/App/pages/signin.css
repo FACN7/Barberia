@@ -1,5 +1,4 @@
-input[type="email"],
-input[type="password"] {
+.email_input,.password_input {
   width: 321px;
   height: 48.5px;
 
