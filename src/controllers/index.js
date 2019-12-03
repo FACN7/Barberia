@@ -38,9 +38,7 @@ router.get("/getallhours/:day", (req, res) => {
 });
 
 router.post("/modifyworkingday", (req, res) => {
-  const data = req.body;
-  console.log(typeof data);
-  queries.modifyworkingday(data)
+  queries.modifyworkingday(req.body)
   .catch(err => console.log(err));
 });
 

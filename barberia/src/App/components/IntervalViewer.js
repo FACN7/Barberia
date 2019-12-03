@@ -13,19 +13,19 @@ const days = [
 
 //this is a dropdownlist component to be used in the component AddTime only.
 const DropDownList = (props) => {
-  const [value, setValue] = React.useState('0900');
-  const [dropList, setDropList] = React.useState(["0900", "0930", "1000", "1030", "1100", "1130", "1200", "1230", "1300", "1330", "1400", "1430", "1500", "1530", "1600", "1630", "1700", "1730", "1800", "1830", "1900", "1930", "2000", "2030", "2100", "2130", "2200", "2230", "2300", "2330"].sort())
+  const [timeValue, setTimeValue] = React.useState('0900');
+  const [workingHoursList, setWorkingHoursList] = React.useState(["0900", "0930", "1000", "1030", "1100", "1130", "1200", "1230", "1300", "1330", "1400", "1430", "1500", "1530", "1600", "1630", "1700", "1730", "1800", "1830", "1900", "1930", "2000", "2030", "2100", "2130", "2200", "2230", "2300", "2330"].sort())
   const changePick = (e) => {
-    setValue(e.target.value); console.log("DDL value is:" + value + " target.value is: " + e.target.value)
-  };
+    setTimeValue(e.target.value)
+    };
 
   React.useEffect(() => {
-    props.setHour(value);
-  }, [value]);
+    props.setHour(timeValue);
+  }, [timeValue]);
 
   return <div>
     <select onChange={(e) => changePick(e)} name="hours" >
-      {dropList.map(halfHour => <option value={halfHour}>{halfHour.slice(0, 2) + ":" + halfHour.slice(-2)}</option>)}
+      {workingHoursList.map(halfHour => <option value={halfHour}>{halfHour.slice(0, 2) + ":" + halfHour.slice(-2)}</option>)}
     </select>
   </div>;
 };
@@ -34,13 +34,13 @@ const DropDownList = (props) => {
 const AddTime = ({ hidden, addSlot, day }) => {
   const [start_time, setStartTime] = React.useState("0900");
   const [end_time, setEndTime] = React.useState("0900");
-  const func = () => {
+  const executeButtonFunctionToEditTheListInPreviousComponentPlease = () => {
     addSlot({ day_id: 4, day, start_time, end_time });
   };
   return <div hidden={hidden}>
     <DropDownList setHour={setStartTime} />
     <DropDownList setHour={setEndTime} />
-    <button onClick={() => func()}> add </button>
+    <button onClick={() => executeButtonFunctionToEditTheListInPreviousComponentPlease()}> add </button>
   </div>
 };
 
@@ -81,7 +81,7 @@ const IntervalViewer = props => {
     <div className="interval-day">
       <div className="booking-header">
         <div className="booking-date">{day}</div>
-        <AddTime addSlot={(obj) => { list.push(obj); setList([...list]); console.log(list) }} day={props.day} hidden={!editable} />
+        <AddTime addSlot={(obj) => setList([...list,obj])} day={props.day} hidden={!editable} />
         <div className="booking-cancel">
           <button className="edit-button" onClick={deleteAndAddTimes}>
             {editable ? "Done" : "Edit"}
