@@ -11,10 +11,11 @@ const notFoundPage = '<p style="font-size: 10vh; text-align: center;">404!</p>';
 
 router.post("/signin", (req, res) => {
   queries
-  .getUser()
-  .then(row => row.rows[0]).then((userDetails) => {
-    const { email, password } = req.body;
-    
+    .getUser()
+    .then(row => row.rows[0])
+    .then(userDetails => {
+      const { email, password } = req.body;
+
       if (email == userDetails.email) {
         encryption
           .comparePassword(password, userDetails.password)
@@ -30,13 +31,40 @@ router.post("/signin", (req, res) => {
           })
           .catch(err => console.log(err));
       }
-    }).catch(err => {
-      res.send("failed to authenticate")
+    })
+    .catch(err => {
+      res.send("failed to authenticate");
     });
 });
 
-router.get("/signout", (req, res) => {
-  res.cookie("jwt", 0, { maxAge: 0 });
+router.get("/checkIsLoggedIn", (req, res) => {
+  const authCookie = req.cookies.jwt;
+
+  // if the cookie does not exist then responsed with false
+  if (!authCookie) {
+    return res.send({ loggedIn: false });
+  }
+  try {
+    const verifiedCookie = verify(authCookie, SECRET);
+  } catch (err) {
+    return res.send({ loggedIn: false });
+  }
+
+  // if the verifiedCookie does not have the user_id key then responed with false
+  if (!verifiedCookie.user_id) {
+    return res.send({ loggedIn: false });
+  }
+
+  queries
+    .getUser()
+    .then(row => {
+      if (row.rows.length === 1) {
+        res.send({ loggedIn: true });
+      } else {
+        res.send({ loggedIn: false });
+      }
+    })
+    .catch(err => res.send({ loggedIn: false }));
 });
 
 router.get("/getAllBookings", (req, res) => {
