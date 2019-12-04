@@ -5,46 +5,34 @@ const path = require("path");
 const { sign, verify } = require("jsonwebtoken");
 const encryption = require("../encryption");
 const env = require("env2");
-
 env("./config.env");
-
 let SECRET = process.env.SECRET;
-
-const userDetails = {
-  email: "admin@gmail.com",
-  password: "$2b$10$Gld9zDGpR81k0/CYeo2kYOQ9yEJPtd4EiGXbXeAC54EkSgTwKvTIG"
-};
 const notFoundPage = '<p style="font-size: 10vh; text-align: center;">404!</p>';
 
 router.post("/signin", (req, res) => {
-  const { email, password } = req.body;
-  console.log(email, password);
-  console.log("email == userDetails.email is ", email == userDetails.email);
-  if (email == userDetails.email) {
-    encryption
-      .comparePassword(password, userDetails.password)
-      .then(promisres => res.json(promisres))
-      .then(isMatch => {
-        if (isMatch) {
-          const cookie = sign(userDetails, SECRET);
-          res.cookie("jwt", cookie);
-        }
-        if (!isMatch) {
-          console.log("isMatch is a ", isMatch);
-          return isMatch;
-        }
-      })
-      .then(data => {
-        console.log("finished fetching");
-        return data;
-      });
-  }
-  // queries
-  //   .getUser(useremail)
-  //   .then(row => console.log(row.rows))
-  //   .catch(err => console.log(err));
-
-  res.send();
+  queries
+  .getUser()
+  .then(row => row.rows[0]).then((userDetails) => {
+    const { email, password } = req.body;
+    
+      if (email == userDetails.email) {
+        encryption
+          .comparePassword(password, userDetails.password)
+          .then(isMatch => {
+            if (isMatch) {
+              const cookie = sign(userDetails, SECRET);
+              res.cookie("jwt", cookie);
+              res.send();
+            }
+            if (!isMatch) {
+              res.send();
+            }
+          })
+          .catch(err => console.log(err));
+      }
+    }).catch(err => {
+      res.send("failed to authenticate")
+    });
 });
 
 router.get("/signout", (req, res) => {
