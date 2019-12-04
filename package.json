@@ -20,11 +20,15 @@
   },
   "homepage": "https://github.com/FACN7/Barberia#readme",
   "dependencies": {
+    "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.4",
     "env2": "^2.2.2",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "hookrouter": "^1.2.3",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^7.14.0"
   }
 }

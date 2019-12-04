@@ -24,10 +24,19 @@ const Signin = () => {
     return flag;
   };
 
+  const user = { email, password };
+
   const handleSubmit = event => {
     event.preventDefault();
 
     if (validation()) {
+      fetch("/api/signin", {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
     }
   };
   return (
