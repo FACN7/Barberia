@@ -7,7 +7,7 @@ function Schedule() {
     fetch("/api/getAllBookings")
       .then(res => res.json())
       .then(list => setList(list));
-  }, [list]);
+  }, []);
   return (
     <div className="App">
       <h1>Your Bookings</h1>
