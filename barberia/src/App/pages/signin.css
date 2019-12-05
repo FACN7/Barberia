@@ -1,0 +1,38 @@
+.email_input,.password_input {
+  width: 321px;
+  height: 48.5px;
+
+  top: 255px;
+  border: 1px solid #c5d86d;
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin: 40px;
+  padding-left: 1%;
+}
+
+.error {
+  color: red;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.signin_button {
+  width: 321px;
+  height: 70px;
+  left: 26px;
+  top: 564px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 29px;
+  line-height: 34px;
+  align-items: center;
+  text-align: center;
+  color: #2e294e;
+  background: #c5d86d;
+  border-radius: 20px;
+}
+
+.signin_form {
+  margin-top: 10em;
+}
