@@ -52,8 +52,6 @@ router.post("/adminCancelAppointment", (req, res) => {
   queries.adminCancelAppointment(id).catch(err => console.log(err));
 });
 
-router.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/barberia/build/index.html"));
-});
+
 
 module.exports = router;
