@@ -7,20 +7,37 @@ import {getRoundedTime} from "./components/helpFunctions";
 import Calendar from "./pages/Calendar";
 import Congratulation from "./pages/Congratulation";
 import Signin from "./pages/Signin";
+import Signout from "./pages/Signout";
+
 import Services from "./pages/Services";
 
 import AdminWorkingDays from "./pages/AdminWorkingDays";
 import moment from "moment";
 
-//return name stat to confirm page anfd fix all related thing
-//talk about date convert
-//talk about time at calendar component
-//check if still have problem saving to db
-
 import BookingSchedule from "./pages/BookingSchedule";
 import "./App.css";
 
 function App() {
+  let [logedin, setLogedin] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch("/api/checkIsLoggedIn")
+      .then(res => res.json())
+      .then(res => {
+        const forbiddenEndpoints = ["/admin", "/adminworkingdays", "/list"];
+        // if the user is not logged in and trying to access the /admin page then redirect thme back to the login
+        if (
+          !res.loggedIn &&
+          forbiddenEndpoints.filter(
+            pathname => pathname === window.location.pathname
+          ).length
+        ) {
+          window.location.assign("/signin");
+        }
+      })
+      .catch(err => 2);
+  });
+
   //set date state on higher level to use in all other pages, sent setters and getters to apropriate components (look at calendar for ex.)
   let [formDate, setFormDate] = React.useState(new Date());
   let [baseDate, setBaseDate] = React.useState(
@@ -69,7 +86,9 @@ function App() {
       />
     ),
     "/congratulation": () => <Congratulation />,
-    "/signin": () => <Signin />,
+    "/signin": () => <Signin logedin={logedin} setLogedin={setLogedin} />,
+    "/signout": () => <Signout />,
+
     "/services": () => (
       <Services
         setServiceInUse={setServiceInUse}

@@ -1,10 +1,10 @@
 .barberia-name h3 {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   font-size: 30px;
   display: flex;
   align-items: center;
   text-align: center;
-  color: #C5D86D;
+  color: #c5d86d;
 }
 
 .location-button img {
@@ -32,4 +32,38 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
+}
+
+.pick_service {
+  position: absolute;
+  width: 233px;
+  height: 66px;
+  left: 78px;
+  top: 350.97px;
+
+  background: #c5d86d;
+  box-shadow: 0px 0px 20px #2e294e;
+  border-radius: 20px;
+  transform: rotate(10deg);
+}
+
+.pick_service_span {
+  position: absolute;
+  width: 232.24px;
+  height: 31px;
+  left: 75.04px;
+  top: 333.73px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #2e294e;
+
+  transform: rotate(10deg);
 }

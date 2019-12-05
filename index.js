@@ -4,7 +4,9 @@ const bodyParser = require("body-parser");
 const queries = require("./src/queries");
 const app = express();
 const controllers = require("./src/controllers");
+const cookieParser = require("cookie-parser");
 
+app.use(cookieParser());
 const jsonparser = bodyParser.json();
 app.use(jsonparser);
 app.use("/api", controllers);

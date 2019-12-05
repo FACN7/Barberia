@@ -1,16 +1,19 @@
 import React from "react";
+import Cookie from "js-cookie";
+import { Redirect } from "react-router-dom";
+
 import "./signin.css";
 
-const Signin = () => {
+const Signin = props => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error_ms, setError_ms] = React.useState("");
 
+  const token = Cookie.get("jwt");
+  if (token) window.location = "/";
+
   const collectInputEmail = event => setEmail(event.target.value);
   const collectInputPasswordl = event => setPassword(event.target.value);
-
-  console.log(email);
-  console.log(password);
 
   const validation = () => {
     let flag = true;
@@ -24,12 +27,26 @@ const Signin = () => {
     return flag;
   };
 
+  const user = { email, password };
+
   const handleSubmit = event => {
     event.preventDefault();
 
     if (validation()) {
+      fetch("/api/signin", {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(props.setLogedin(true));
     }
   };
+
+  const redirect = () => {
+    return props.logedin;
+  };
+
   return (
     <form className="signin_form" onSubmit={handleSubmit}>
       <div>
@@ -58,7 +75,16 @@ const Signin = () => {
       </div>
       <br></br>
 
-      <input type="submit" className="signin_button" value="Sign In" />
+      {redirect() ? (
+        <a href="/admin">
+          {" "}
+          <input className="signin_button" value="Sign In" />
+          <br></br>
+          go
+        </a>
+      ) : (
+        <input type="submit" className="signin_button" value="Sign In" />
+      )}
     </form>
   );
 };
