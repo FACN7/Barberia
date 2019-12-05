@@ -45,9 +45,7 @@ const Signin = props => {
 
   const redirect = () => {
     console.log(props.logedin);
-    if (props.logedin) {
-      return <Redirect to="/" />;
-    }
+    return props.logedin;
   };
 
   return (
@@ -78,8 +76,16 @@ const Signin = props => {
       </div>
       <br></br>
 
-      <input type="submit" className="signin_button" value="Sign In" />
-      {redirect()}
+      {redirect() ? (
+        <a href="/admin">
+          {" "}
+          <input className="signin_button" value="Sign In" />
+          <br></br>
+          go
+        </a>
+      ) : (
+        <input type="submit" className="signin_button" value="Sign In" />
+      )}
     </form>
   );
 };
