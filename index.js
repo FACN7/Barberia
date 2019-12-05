@@ -8,9 +8,12 @@ const cookieParser = require("cookie-parser");
 
 app.use(cookieParser());
 const jsonparser = bodyParser.json();
-app.use(express.static(path.join(__dirname, "barberia/build")));
 app.use(jsonparser);
 app.use("/api", controllers);
+app.use(express.static(path.join(__dirname, "barberia/build")));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/barberia/build/index.html"));
+  });
 
 const port = process.env.PORT || 5000;
 app.listen(port);

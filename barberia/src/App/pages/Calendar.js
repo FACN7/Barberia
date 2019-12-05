@@ -15,9 +15,12 @@ function Calendar({
   setBaseDate,
   baseDate
 }) {
+
+
   const isWeekday = date => {
     const day = date.getDay();
-    return day !== 5 && day !== 6;
+    // return day !== 5 && day !== 6;
+    return true
   };
 
   return (
@@ -35,9 +38,11 @@ function Calendar({
         inline
       />
 
-      <AppoPicker time={time} setTime={setTime} baseDate={baseDate} />
+      <AppoPicker time={time} setTime={setTime} day={formDate.getDay()} baseDate={baseDate} />
       <p>
         time picked is {time.toString()}
+        <br />
+        form date : {formDate.getDay()}
         <br />
         base date: {baseDate}
         <br />

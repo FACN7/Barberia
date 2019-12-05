@@ -3,6 +3,7 @@ import { useRoutes } from "hookrouter";
 import Confirmation from "./pages/Confirmation"; //pages to be routed to
 import Home from "./pages/Home";
 import List from "./pages/List";
+import {getRoundedTime} from "./components/helpFunctions";
 import Calendar from "./pages/Calendar";
 import Congratulation from "./pages/Congratulation";
 import Signin from "./pages/Signin";
@@ -42,8 +43,8 @@ function App() {
   let [baseDate, setBaseDate] = React.useState(
     moment(formDate).format("YYYYMMDD")
   );
-  let [time, setTime] = React.useState(
-    moment(new Date(), "hmm").format("HHmm")
+  let [time, setTime] = React.useState(getRoundedTime(
+    moment(new Date(), "hmm").format("HHmm"))
   );
   let [serviceInUse, setServiceInUse] = React.useState(1);
   let [service, setService] = React.useState([
