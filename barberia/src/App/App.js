@@ -8,17 +8,10 @@ import Congratulation from "./pages/Congratulation";
 import Signin from "./pages/Signin";
 import Signout from "./pages/Signout";
 
-
-
 import Services from "./pages/Services";
 
 import AdminWorkingDays from "./pages/AdminWorkingDays";
 import moment from "moment";
-
-//return name stat to confirm page anfd fix all related thing
-//talk about date convert
-//talk about time at calendar component
-//check if still have problem saving to db
 
 import BookingSchedule from "./pages/BookingSchedule";
 import "./App.css";
@@ -30,7 +23,7 @@ function App() {
     fetch("/api/checkIsLoggedIn")
       .then(res => res.json())
       .then(res => {
-        const forbiddenEndpoints = ["/admin", "/adminworkingdays"];
+        const forbiddenEndpoints = ["/admin", "/adminworkingdays", "/list"];
         // if the user is not logged in and trying to access the /admin page then redirect thme back to the login
         if (
           !res.loggedIn &&

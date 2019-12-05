@@ -44,7 +44,6 @@ const Signin = props => {
   };
 
   const redirect = () => {
-    console.log(props.logedin);
     return props.logedin;
   };
 
