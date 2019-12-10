@@ -4,7 +4,7 @@
     const endTime = 24;
     let acc = 0, i;
     let timesArray = []
-    for (i = startTime; i < endTime; i++) {
+    for (i = startTime; i < endTime+1; i++) {
       timesArray.push(("00" + i).slice(-2) + "00")
       acc = interval;
       while (acc % 60 != 0 && acc < 60) {
@@ -18,7 +18,7 @@
     const roundedTime= intervalsArray.filter(item => {
       return parseInt(item[0]) <= parseInt(time) && parseInt(item[1]) > parseInt(time);
     })[0][1];
-    return (roundedTime=="undefined")?"0000":roundedTime;
+    return (roundedTime=="undefined"||"2400")?"0000":roundedTime;
   };
 
   export {getRoundedTime};
